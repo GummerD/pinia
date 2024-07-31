@@ -7,12 +7,11 @@
         </div>
         <span class="movie-overview">{{ movie.overview }}</span>
         <div class="movie-buttons">
-            <button class="btn movie-buttons-watch"></button>
-            <button class="btn movie-buttons-watch">
+            <button class="btn movie-buttons-watched">
                 <span v-if="!movie.isWatched">Watched</span>
-                <span v-else>Unwatch</span>
+                <span v-else>Unwatched</span>
             </button>
-            <button class="btn movies-button-delete"> Delete</button>
+            <button class="btn movie-buttons-delete">Delete</button>
         </div>
     </div>
 </template>
@@ -72,7 +71,7 @@ export default {
 
 .movie-buttons-watched {
     color: #fff;
-    background: #1eb4c3;
+    background: #1eb4c3 !important;
 }
 
 .movie-buttons-watched__icon {
@@ -82,6 +81,6 @@ export default {
 
 .movie-buttons-delete {
     color: #fff;
-    background: #ff2a2a;
+    background: #ff2a2a !important;
 }
 </style>
