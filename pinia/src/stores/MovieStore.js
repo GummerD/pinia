@@ -23,6 +23,7 @@ export const useMovieStore = defineStore(
                     release_date: '2000-01-01',
                     isWatched: true,
                 },
-            ]
+            ],
+            activeTab: 1,
         })
 });
