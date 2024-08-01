@@ -5,8 +5,8 @@
     <h2>My Favorite Movies</h2>
   </header>
   <div class="tabs">
-    <button :class="['btn', {btn_green: movieStore.activeTab === 1}]">Favorite</button>
-    <button :class="['btn', {btn_green: movieStore.activeTab === 2}]">Search</button>
+    <button :class="['btn', {btn_green: movieStore.activeTab === 1}]" @click="movieStore.activeTabs(1)">Favorite</button>
+    <button :class="['btn', {btn_green: movieStore.activeTab === 2}]" @click="movieStore.activeTabs(2)">Search</button>
   </div>
   <div class="movies" v-if="movieStore.activeTab === 1">
     <div>
@@ -31,12 +31,10 @@
 </template>
 
 <script setup>
-  import { useMovieStore } from './stores/MovieStore';
+  import { useMovieStore } from "./stores/MovieStore";
   import Movie from "./components/Movie.vue"
 
   const movieStore = useMovieStore();
-
-  
 </script>
 
 <style lang="css">

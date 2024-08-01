@@ -5,7 +5,7 @@ export const useMovieStore = defineStore('movieStore', {
         movies: [
             {
                 id: 1,
-                id: 'Movie_1',
+                title: 'Movie_1',
                 original_title: 'Some description origina ltitle 1',
                 overview: 'Some description 1',
                 poster_path: '/gh4cZbhZxyTbgxQPxD0dOudNPTn.jpg',
@@ -14,7 +14,7 @@ export const useMovieStore = defineStore('movieStore', {
             },
             {
                 id: 2,
-                id: 'Movie_2',
+                title: 'Movie_2',
                 original_title: 'Some description origina ltitle 2',
                 overview: 'Some description 2',
                 poster_path: '/b0PlSFdDwbyK0cf5RxwDpaOJQvQ.jpg',
@@ -23,7 +23,7 @@ export const useMovieStore = defineStore('movieStore', {
             },
             {
                 id: 3,
-                id: 'Movie_3',
+                title: 'Movie_3',
                 original_title: 'Some description origina ltitle 3',
                 overview: 'Some description 3',
                 poster_path: '/b0PlSFdDwbyK0cf5RxwDpaOJQvQ.jpg',
@@ -32,7 +32,7 @@ export const useMovieStore = defineStore('movieStore', {
             },
             {
                 id: 4,
-                id: 'Movie_4',
+                title: 'Movie_4',
                 original_title: 'Some description origina ltitle 4',
                 overview: 'Some description 4',
                 poster_path: '/b0PlSFdDwbyK0cf5RxwDpaOJQvQ.jpg',
@@ -41,7 +41,7 @@ export const useMovieStore = defineStore('movieStore', {
             },
             {
                 id: 5,
-                id: 'Movie_5',
+                title: 'Movie_5',
                 original_title: 'Some description origina ltitle 5',
                 overview: 'Some description 5',
                 poster_path: '/b0PlSFdDwbyK0cf5RxwDpaOJQvQ.jpg',
@@ -57,6 +57,18 @@ export const useMovieStore = defineStore('movieStore', {
         },
         counterMovies(){ 
            return this.movies.length
+        }
+    },
+    actions: {
+        activeTabs(number){
+            this.activeTab = number;
+        },
+        changeIsWatchad(id){
+            let idx = this.movies.findIndex(el => el.id === id);
+            this.movies[idx].isWatched = !this.movies[idx].isWatched;
+        },
+        deleteMovie(id){
+            this.movies = this.movies.filter(el => el.id != id)
         }
     }
 });
