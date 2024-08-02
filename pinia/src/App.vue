@@ -5,36 +5,41 @@
     <h2>My Favorite Movies</h2>
   </header>
   <div class="tabs">
-    <button :class="['btn', {btn_green: movieStore.activeTab === 1}]" @click="movieStore.activeTabs(1)">Favorite</button>
-    <button :class="['btn', {btn_green: movieStore.activeTab === 2}]" @click="movieStore.activeTabs(2)">Search</button>
+    <button :class="['btn', {btn_green: userStore.activeTab === 1}]" @click="userStore.activeTabs(1)">Favorite</button>
+    <button :class="['btn', {btn_green: userStore.activeTab === 2}]" @click="userStore.activeTabs(2)">Search</button>
   </div>
-  <div class="movies" v-if="movieStore.activeTab === 1">
+  <div class="movies" v-if="userStore.activeTab === 1">
     <div>
       <h3>Watched Movies</h3>
-      <p>Просмотрено фильмов: {{ movieStore.watchedMovies.length }}</p>
+      <p>Просмотрено фильмов: {{ userStore.watchedMovies.length }}</p>
     <Movie 
-      v-for="movie of movieStore.watchedMovies"
+      v-for="movie of userStore.watchedMovies"
       :key="movie.id"
       :movie="movie"
     />
     </div>
     <h3>All Movies</h3>
-    <p>Всего фильмов: {{ movieStore.counterMovies}}</p>
+    <p>Всего фильмов: {{ userStore.counterMovies}}</p>
     <Movie 
-      v-for="movie of movieStore.movies"
+      v-for="movie of userStore.movies"
       :key="movie.id"
       :movie="movie"
     />
   </div>
-  <div class="search" v-else="movieStore.activeTab === 2">Search</div>
+  <div class="search" v-else="userStore.activeTab === 2">
+    Search
+    <Search/>
+
+  </div>
 </main>
 </template>
 
 <script setup>
-  import { useMovieStore } from "./stores/MovieStore";
-  import Movie from "./components/Movie.vue"
+  import { useUserStore } from "./stores/UserStore";
+  import Movie from "./components/Movie.vue";
+  import Search from "./components/Search.vue"
 
-  const movieStore = useMovieStore();
+  const userStore = useUserStore();
 </script>
 
 <style lang="css">

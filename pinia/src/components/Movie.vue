@@ -18,8 +18,8 @@
 
 <script setup>
 
-import { useMovieStore } from './../stores/MovieStore';
-const movieStore = useMovieStore();
+import { useUserStore } from '../stores/UserStore';
+const movieStore = useUserStore();
 
 
 const props = defineProps({
