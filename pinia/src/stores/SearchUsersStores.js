@@ -14,7 +14,7 @@ export const useSearchUsersStores = defineStore( 'searchUsersStore', {
             this.loader = true;
             const response = await fetch(`${usersUrl}${page}`);
             const data = await response.json();
-            //console.log(data.data);
+            console.log(data.data);
             setTimeout(() => {
                 this.users = data.data;
                 this.loader = false;

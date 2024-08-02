@@ -1,17 +1,31 @@
 <template>
     <div class="movie">
-        <img class="movie-img" :src="`https://image.tmdb.org/t/p/w300_and_h450_bestv2${movie.poster_path}`"
-            :alt="movie.original_title">
+        <img class="movie-img" :src="user.avatar"
+            :alt="user.first_name">
         <div class="movie-name">
-            {{ movie.title }} ({{ movie.release_date }})
+            {{ user.first_name }} ({{ user.release_date }})
         </div>
-        <span class="movie-overview">{{ movie.overview }}</span>
-        <div class="movie-buttons">
-            <button class="btn movie-buttons-watched" @click="movieStore.changeIsWatchad(movie.id)">
-                <span v-if="!movie.isWatched">Watched</span>
-                <span v-else>Unwatched</span>
+        <span class="movie-overview">{{ user.last_name }}</span>
+        <div class="movie-buttons" v-if="!isSearch">
+            <button 
+                class="btn movie-buttons-watched" 
+                @click="userStore.beFriends(user.id)">
+                    <span v-if="!user.isWatched">Дружить</span>
+                    <span v-else>Недружить</span>
             </button>
-            <button class="btn movie-buttons-delete" @click="movieStore.deleteMovie(movie.id)">Delete</button>
+            <button 
+                class="btn movie-buttons-delete"
+                @click="userStore.deleteFriend(user.id)">
+                    Удалить друга
+            </button>
+        </div>
+        <div class="movie-buttons" v-else>
+            <button 
+                class="btn movie-buttons-watched" 
+                >
+                <span>Добавить друга</span>
+                   
+            </button>
         </div>
     </div>
 </template>
@@ -19,14 +33,19 @@
 <script setup>
 
 import { useUserStore } from '../stores/UserStore';
-const movieStore = useUserStore();
+const userStore = useUserStore();
 
 
 const props = defineProps({
-    movie: {
+    user: {
         type: Object,
         required: true,
         default: () => { }
+    },
+    isSearch: {
+        type: Boolean,
+        required: false,
+        default: false
     }
 })
 

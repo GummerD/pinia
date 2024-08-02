@@ -1,17 +1,26 @@
 <template>
     <form @submit.prevent="searchUsersStore.getAllUsers(page)">
-        <input type="number" class="search-input" placeholder="input users" v-model="page">
+        <input 
+            type="number" 
+            class="search-input" 
+            placeholder="input users" 
+            v-model="page"
+        >
     </form>
 
     <Loader v-if="searchUsersStore.loader == true" />
 
     <div v-if="searchUsersStore.users.length > 0">
-        Список пользователей:
+        <div>
+            Список пользователей: {{ searchUsersStore.users.length }}
+        </div>
+        
         <div 
             v-for="user of searchUsersStore.users" 
             :key="user.id">
-            <Users
+            <User
                 :user="user"
+                :isSearch="isSearch"
             />
         </div>
     </div>
@@ -24,11 +33,12 @@
 <script setup>
 import { ref } from 'vue';
 import { useSearchUsersStores } from '../stores/SearchUsersStores';
-import Users from './Users.vue';
+import User from './User.vue';
 import Loader from './Loader.vue';
 
 const page = ref('');
 const searchUsersStore = useSearchUsersStores();
+let isSearch = true;
 </script>
 
 <style lang="css" scoped>

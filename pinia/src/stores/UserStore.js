@@ -2,49 +2,49 @@ import { defineStore } from "pinia";
 
 export const useUserStore = defineStore('movieStore', {
     state: () => ({
-        movies: [
+        users: [
             {
                 id: 1,
-                title: 'Movie_1',
-                original_title: 'Some description origina ltitle 1',
-                overview: 'Some description 1',
-                poster_path: '/gh4cZbhZxyTbgxQPxD0dOudNPTn.jpg',
+                email: 'email_1',
+                first_name: 'First_name 1',
+                last_name: 'Last_name 1',
+                avatar: '/src/img/uncknow.jpg',
                 release_date: '2000-01-01',
                 isWatched: false,
             },
             {
                 id: 2,
-                title: 'Movie_2',
-                original_title: 'Some description origina ltitle 2',
-                overview: 'Some description 2',
-                poster_path: '/b0PlSFdDwbyK0cf5RxwDpaOJQvQ.jpg',
+                email: 'email_2',
+                first_name: 'First_name 2',
+                last_name: 'Last_name 2',
+                avatar: '/src/img/uncknow.jpg',
                 release_date: '2000-01-01',
                 isWatched: true,
             },
             {
                 id: 3,
-                title: 'Movie_3',
-                original_title: 'Some description origina ltitle 3',
-                overview: 'Some description 3',
-                poster_path: '/b0PlSFdDwbyK0cf5RxwDpaOJQvQ.jpg',
+                email: 'email_3',
+                first_name: 'First_name 3',
+                last_name: 'Last_name 3',
+                avatar: '/src/img/uncknow.jpg',
                 release_date: '2000-01-01',
                 isWatched: true,
             },
             {
                 id: 4,
-                title: 'Movie_4',
-                original_title: 'Some description origina ltitle 4',
-                overview: 'Some description 4',
-                poster_path: '/b0PlSFdDwbyK0cf5RxwDpaOJQvQ.jpg',
+                email: 'email_4',
+                first_name: 'First_name 4',
+                last_name: 'Last_name 4',
+                avatar: '/src/img/uncknow.jpg',
                 release_date: '2000-01-01',
                 isWatched: false,
             },
             {
                 id: 5,
-                title: 'Movie_5',
-                original_title: 'Some description origina ltitle 5',
-                overview: 'Some description 5',
-                poster_path: '/b0PlSFdDwbyK0cf5RxwDpaOJQvQ.jpg',
+                email: 'email_5',
+                first_name: 'First_name 5',
+                last_name: 'Last_name 5',
+                avatar: '/src/img/uncknow.jpg',
                 release_date: '2000-01-01',
                 isWatched: false,
             },
@@ -53,22 +53,22 @@ export const useUserStore = defineStore('movieStore', {
     }),
     getters: {
         watchedMovies(){
-            return this.movies.filter(el => el.isWatched)
+            return this.users.filter(el => el.isWatched)
         },
         counterMovies(){ 
-           return this.movies.length
+           return this.users.length
         }
     },
     actions: {
         activeTabs(number){
             this.activeTab = number;
         },
-        changeIsWatchad(id){
-            let idx = this.movies.findIndex(el => el.id === id);
-            this.movies[idx].isWatched = !this.movies[idx].isWatched;
+        beFriends(id){
+            let idx = this.users.findIndex(el => el.id === id);
+            this.users[idx].isWatched = !this.users[idx].isWatched;
         },
-        deleteMovie(id){
-            this.movies = this.movies.filter(el => el.id != id)
+        deleteFriend(id){
+            this.users = this.users.filter(el => el.id != id)
         }
     }
 });

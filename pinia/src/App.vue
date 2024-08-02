@@ -10,20 +10,20 @@
   </div>
   <div class="movies" v-if="userStore.activeTab === 1">
     <div>
-      <h3>Watched Movies</h3>
-      <p>Просмотрено фильмов: {{ userStore.watchedMovies.length }}</p>
-    <Movie 
-      v-for="movie of userStore.watchedMovies"
-      :key="movie.id"
-      :movie="movie"
+      <h3>Список друзей</h3>
+      <p>Всего друзей: {{ userStore.watchedMovies.length }}</p>
+    <User
+      v-for="user of userStore.watchedMovies"
+      :key="user.id"
+      :user="user"
     />
     </div>
-    <h3>All Movies</h3>
+    <h3>Список пользователей</h3>
     <p>Всего фильмов: {{ userStore.counterMovies}}</p>
-    <Movie 
-      v-for="movie of userStore.movies"
-      :key="movie.id"
-      :movie="movie"
+    <User 
+      v-for="user of userStore.users"
+      :key="user.id"
+      :user="user"
     />
   </div>
   <div class="search" v-else="userStore.activeTab === 2">
@@ -36,7 +36,7 @@
 
 <script setup>
   import { useUserStore } from "./stores/UserStore";
-  import Movie from "./components/Movie.vue";
+  import User from "./components/User.vue";
   import Search from "./components/Search.vue"
 
   const userStore = useUserStore();
