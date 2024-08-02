@@ -19,7 +19,7 @@ export const useUserStore = defineStore('movieStore', {
                 last_name: 'Last_name 2',
                 avatar: '/src/img/uncknow.jpg',
                 release_date: '2000-01-01',
-                isWatched: true,
+                isWatched: false,
             },
             {
                 id: 3,
@@ -28,7 +28,7 @@ export const useUserStore = defineStore('movieStore', {
                 last_name: 'Last_name 3',
                 avatar: '/src/img/uncknow.jpg',
                 release_date: '2000-01-01',
-                isWatched: true,
+                isWatched: false,
             },
             {
                 id: 4,

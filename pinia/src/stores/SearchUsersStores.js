@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { useUserStore } from "./UserStore";
 
 
 
@@ -14,12 +15,21 @@ export const useSearchUsersStores = defineStore( 'searchUsersStore', {
             this.loader = true;
             const response = await fetch(`${usersUrl}${page}`);
             const data = await response.json();
-            console.log(data.data);
+            //console.log(data.data);
             setTimeout(() => {
                 this.users = data.data;
                 this.loader = false;
             }, 1000);
             
+        },
+        addToUsers(object){
+            const userStore = useUserStore();
+            //console.log(object)
+            //object.id = crypto.randomUUID();
+            //object.isWatched = false;
+            userStore.users.push({...object, isWatched: false, id: crypto.randomUUID()  });
+            //console.log(userStore.users);
+            userStore.activeTab = 1;
         }
     }
 

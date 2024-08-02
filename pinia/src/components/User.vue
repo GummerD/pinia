@@ -22,6 +22,7 @@
         <div class="movie-buttons" v-else>
             <button 
                 class="btn movie-buttons-watched" 
+                @click="searchUserStore.addToUsers(user)"
                 >
                 <span>Добавить друга</span>
                    
@@ -33,8 +34,10 @@
 <script setup>
 
 import { useUserStore } from '../stores/UserStore';
-const userStore = useUserStore();
+import { useSearchUsersStores } from '../stores/SearchUsersStores';
 
+const userStore = useUserStore();
+const searchUserStore = useSearchUsersStores();
 
 const props = defineProps({
     user: {
