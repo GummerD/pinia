@@ -22,7 +22,7 @@
         <div class="movie-buttons" v-else>
             <button 
                 class="btn movie-buttons-watched" 
-                @click="searchUserStore.addToUsers(user)"
+                @click="searchUserStore.addUser(user)"
                 >
                 <span>Добавить друга</span>
                    
