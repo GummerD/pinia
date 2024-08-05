@@ -11,7 +11,7 @@
   <div class="movies" v-if="userStore.activeTab === 1">
     <div>
       <h3>Список друзей</h3>
-      <p>Всего друзей: {{ userStore.beFriend.length }}</p>
+      <p>Всего друзей: {{ userStore.beFriend.length}}</p>
     <User
       v-for="user of userStore.beFriend"
       :key="user.id"
@@ -37,9 +37,10 @@
 <script setup>
   import { useUserStore } from "./stores/UserStore";
   import User from "./components/User.vue";
-  import Search from "./components/Search.vue"
-
+  import Search from "./components/Search.vue";
+ 
   const userStore = useUserStore();
+  
 </script>
 
 <style lang="css">
