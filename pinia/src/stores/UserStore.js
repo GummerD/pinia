@@ -1,9 +1,9 @@
 import { defineStore } from "pinia";
 
-import { ref, computed, onUpdated } from "vue";
+import { ref, computed } from "vue";
 
 /*
-export const useUserStore = defineStore('movieStore', {
+export const useUserStore = defineStore('userStore', {
     state: () => ({
         users: [
             {
@@ -131,20 +131,14 @@ export const useUserStore = defineStore( 'userStore', ()=>{
 
     const activeTab = ref(1);
 
-    const friendsList = ref([]);
-
     // getters оборачиваются в computed свойство:
 
-    const makeFriends = () => {// вероятно здесь уже что-то поменялось, это свойство не работает
-        let newFriend = users.value.filter((el) => el.isWatched == true);
-        console.log(newFriend);
-
-        friendsList.value.push({...friendsList, newFriend})
-        console.log(friendsList);
-    };
+    const makeFriends = computed( () => {// исправлено
+        return users.value.filter((el) => el.isWatched);
+    });
 
     const counterMovies = computed(()=>{ 
-        users.value.length
+       return users.value.length
     });
 
     const activeTabs = (number) =>{
@@ -168,7 +162,6 @@ export const useUserStore = defineStore( 'userStore', ()=>{
     return {
         users,
         activeTab,
-        friendsList,
         counterMovies,
         makeFriends,
         activeTabs,

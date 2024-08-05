@@ -11,9 +11,9 @@
   <div class="movies" v-if="userStore.activeTab === 1">
     <div>
       <h3>Список друзей</h3>
-      <p>Всего друзей: {{ userStore.friendsList.length  }}</p>
+      <p>Всего друзей: {{ userStore.makeFriends.length  }}</p>
     <User
-      v-for="user of userStore.friendsList"
+      v-for="user of userStore.makeFriends"
       :key="user.id"
       :user="user"
     />
