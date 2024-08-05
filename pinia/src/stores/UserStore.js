@@ -135,13 +135,13 @@ export const useUserStore = defineStore( 'userStore', ()=>{
 
     // getters оборачиваются в computed свойство:
 
-    const makeFriends = computed(() => {// вероятно здесь уже что-то поменялось, это свойство не работает
+    const makeFriends = () => {// вероятно здесь уже что-то поменялось, это свойство не работает
         let newFriend = users.value.filter((el) => el.isWatched == true);
         console.log(newFriend);
 
-        friendsList.value.push(newFriend)
+        friendsList.value.push({...friendsList, newFriend})
         console.log(friendsList);
-    });
+    };
 
     const counterMovies = computed(()=>{ 
         users.value.length
@@ -157,6 +157,7 @@ export const useUserStore = defineStore( 'userStore', ()=>{
         //console.log(idx);
         //console.log(users.value[idx]);
         users.value[idx].isWatched = !users.value[idx].isWatched;
+        makeFriends();
     };
 
     const deleteFriend = (id)=>{
