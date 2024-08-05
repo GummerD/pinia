@@ -131,12 +131,16 @@ export const useUserStore = defineStore( 'userStore', ()=>{
 
     const activeTab = ref(1);
 
-    
+    const friendsList = ref([]);
 
     // getters оборачиваются в computed свойство:
 
-    const friendsList = computed(() => {// вероятно здесь уже что-то поvенялось, это свойство не работает
-       users.value.filter((el) => el.isWatched)
+    const makeFriends = computed(() => {// вероятно здесь уже что-то поменялось, это свойство не работает
+        let newFriend = users.value.filter((el) => el.isWatched == true);
+        console.log(newFriend);
+
+        friendsList.value.push(newFriend)
+        console.log(friendsList);
     });
 
     const counterMovies = computed(()=>{ 
@@ -148,10 +152,10 @@ export const useUserStore = defineStore( 'userStore', ()=>{
     };
 
     const beFriends = (id) => {
-        console.log(id);
+        //console.log(id);
         let idx = users.value.findIndex(el => el.id === id);
-        console.log(idx);
-        console.log(users.value[idx]);
+        //console.log(idx);
+        //console.log(users.value[idx]);
         users.value[idx].isWatched = !users.value[idx].isWatched;
     };
 
@@ -165,6 +169,7 @@ export const useUserStore = defineStore( 'userStore', ()=>{
         activeTab,
         friendsList,
         counterMovies,
+        makeFriends,
         activeTabs,
         beFriends,
         deleteFriend,

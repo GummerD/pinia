@@ -60,7 +60,7 @@ export const useSearchUsersStores = defineStore('searchUsersStores', () => {
         //console.log(object);
         //object.id = crypto.randomUUID();
         //object.isWatched = false;
-        userStore.users.push({...array, isWatched: false, id: crypto.randomUUID()  });
+        userStore.users.push({...oject, isWatched: false, id: crypto.randomUUID()});
         //console.log(userStore.users);
         userStore.activeTab = 1;
     };
