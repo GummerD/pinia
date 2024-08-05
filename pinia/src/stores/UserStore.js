@@ -52,7 +52,7 @@ export const useUserStore = defineStore('movieStore', {
         activeTab: 1,
     }),
     getters: {
-        watchedMovies(){
+        beFriend(){
             return this.users.filter(el => el.isWatched)
         },
         counterMovies(){ 
